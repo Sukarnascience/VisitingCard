@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Easter Egg</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Additional styling for the button and QR logo */
+        .qr-button {
+            display: none;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #FFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Lato', sans-serif;
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3 class="head">Redirecting to specific server</h3>
+        <div class="component PC">
+            <div class="flare"></div>
+        </div>
+        <div class="component signals">
+            <div class="dot first"></div>
+            <div class="dot second"></div>
+            <div class="dot third"></div>
+        </div>
+        <div class="component server">
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="button"></div>
+            <div class="button"></div>
+        </div>
+        <br>
+        <button class="qr-button" onclick="openQR()">Open QR</button>
+    </div>
+    <script>
+        // JavaScript to handle redirection and button visibility
+        setTimeout(function() {
+            window.location.href = "throughQR.html";
+        }, 2000);
+
+        setTimeout(function() {
+            document.querySelector('.qr-button').style.display = 'block';
+        }, 2100);
+
+        function openQR() {
+            window.location.href = "throughQR.html";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Under Development</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js" integrity="sha512-wC/cunGGDjXSl9OHUH0RuqSyW4YNLlsPwhcLxwWW1CR4OeC2E1xpcdZz2DeQkEmums41laI+eGMw95IJ15SS3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <style>
+          
+    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Aleo', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+background: linear-gradient(107.56deg, #D7B818 0%, #E613AB 100%);
+
+}
+
+.wrapper {
+  position: relative;
+
+}
+
+.card {
+  width: 515.6px;
+  height: 325.14px;
+  background: linear-gradient(111.66deg, rgb(255, 66, 227) 0%, #a26aff99 100.04%);
+  border-radius: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 20px;
+  overflow: hidden;
+  transition: all 0.2s linear;
+}
+
+.card .card-full {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 100;
+}
+
+.card-circle {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.card-circle .circle-item {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  z-index: 10;
+}
+
+.card-circle .circle-item:nth-child(1) {
+  background-color: #d3c800;
+  width: 170px;
+  height: 170px;
+  top: -30px;
+  left: -30px;
+}
+
+.card-circle .circle-item:nth-child(2) {
+  background-color: #FF008A;
+  width: 107px;
+  height: 107px;
+  top: 25px;
+  left: 150px;
+}
+
+.card-circle .circle-item:nth-child(3) {
+  background-color: #1C00C6;
+  width: 197px;
+  height: 197px;
+  top: -60px;
+  right: 0px;
+}
+
+.card-circle .circle-item:nth-child(4) {
+  background-color: #CA0055;
+  width: 288px;
+  height: 288px;
+  bottom: -60px;
+  right: 30px;
+}
+
+.card-circle .circle-item:nth-child(5) {
+  background-color: #0057FF;
+  width: 154px;
+  height: 154px;
+  bottom: -30px;
+  left: -10px;
+}
+
+
+.wrapper .circle {
+  display: none;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  transition: all 0.2s linear;
+}
+
+.wrapper .circle:nth-child(2) {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  background: linear-gradient(135deg, #FF5C00 0%, #FFF500 100%);
+  transform: translate(-50%, 50%);
+  z-index: -1;
+}
+
+.wrapper .circle:nth-child(3) {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background: linear-gradient(135deg, #00FFA3 0%, #0094FF 100%);
+  transform: translate(50%, -50%);
+  z-index: -1;
+}
+
+.card-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  height: calc(100% /3);
+  align-items: center;
+}
+
+.card-header .card-info p:first-child {
+  margin-bottom: 10px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 26px;
+  color: #FFFFFF;
+  opacity: 0.6;
+}
+
+.card-header .card-info p:last-child {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 48px;
+  line-height: 58px;
+  color: #FFFFFF;
+}
+
+.card-header .card-logo {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-header .card-logo .logo-circle {
+  position: relative;
+  display: flex;
+}
+
+.card-header .card-logo .logo-circle .circle-item {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+
+}
+
+.card-header .card-logo .logo-circle .circle-item:nth-child(1) {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: #ffffff;
+  z-index: 1;
+}
+
+.card-header .card-logo .logo-circle .circle-item:nth-child(2) {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background-color: #000000;
+}
+
+.card-header .card-logo .logo-name {
+  color: #fff;
+  font-size: 20px;
+
+}
+
+.card-footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.card-footer .card-serinumber {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 36px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.5px;
+  color: #FFFFFF;
+  opacity: 0.9;
+}
+
+.card-footer .card-date {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 36px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.5px;
+  color: #FFFFFF;
+  opacity: 0.9;
+}
+
+
+@media only screen and (max-width: 550px) {
+
+  .wrapper {
+    width: 90%;
+    max-width: 500px;
+  }
+
+  .card {
+    width: 100%;
+    height: 300px;
+    padding: 10px;
+  }
+
+  .card-header .card-info p:first-child {
+    font-size: 4.4vw;
+    margin: 0;
+  }
+
+  .card-header .card-info p:last-child {
+    font-size: 8vw;
+  }
+
+  .card-footer .card-serinumber {
+    font-size: 5vw;
+  }
+
+  .card-footer .card-date {
+    font-size: 5vw;
+  }
+
+  .wrapper .circle {
+    width: 200px;
+    height: 200px;
+
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .card {
+    height: 250px;
+  }
+
+  .card-header .card-logo .logo-circle .circle-item {
+    width: 53px;
+    height: 53px;
+
+  }
+
+
+  .card-header .card-logo .logo-name {
+    font-size: 4.3vw;
+  }
+
+  .wrapper .circle {
+    width: 170px;
+    height: 170px;
+
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .card {
+    height: 220px;
+  }
+
+  .card-header .card-logo .logo-circle {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .card-header .card-logo .logo-circle .circle-item {
+    width: 45px;
+    height: 45px;
+
+  }
+
+  .wrapper .circle {
+    width: 150px;
+    height: 150px;
+
+  }
+}
+
+        </style>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="card">
+              <div class="card-full">
+                <div class="card-header">
+                  <div class="card-info">
+                    <p>Sukarna Jana</p>
+                    <p>127.0.0.1:53</p>
+                  </div>
+                  <div class="card-logo">
+        
+                    <div class="logo-circle">
+                      <div class="circle-item"></div>
+                      <div class="circle-item"></div>
+                    </div>
+                    <div class="logo-name">
+                      Local DNS
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div class="card-serinumber">
+                    <p>
+                      Still Developing
+                    </p>
+                  </div>
+                  <div class="card-date">
+                    <p> 500</p>
+                  </div>
+                </div>
+              </div>
+              <div class="card-circle">
+                <div class="circle-item"></div>
+                <div class="circle-item"></div>
+                <div class="circle-item"></div>
+                <div class="circle-item"></div>
+                <div class="circle-item"></div>
+              </div>
+        
+            </div>
+        
+        
+            <div class="circle">
+        
+            </div>
+            <div class="circle">
+        
+            </div>
+        
+        
+          </div>
+
+          <script>
+            VanillaTilt.init(document.querySelector(".card"), {
+      max: 25,
+      speed: 400,
+      glare: true,
+    });
+          </script>
+    </body>
+</html>
