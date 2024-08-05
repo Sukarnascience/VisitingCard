@@ -1,63 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Easter Egg</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
-    <style>
-        /* Additional styling for the button and QR logo */
-        .qr-button {
-            display: none;
-            padding: 10px 20px;
-            background-color: #333;
-            color: #FFF;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-family: 'Lato', sans-serif;
-            position: absolute;
-            bottom: -40px;
-            left: 50%;
-            transform: translateX(-50%);
-            text-align: center;
-        }
-
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Webpage</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h3 class="head">Redirecting to specific server</h3>
-        <div class="component PC">
-            <div class="flare"></div>
-        </div>
-        <div class="component signals">
-            <div class="dot first"></div>
-            <div class="dot second"></div>
-            <div class="dot third"></div>
-        </div>
-        <div class="component server">
-            <div class="slot"></div>
-            <div class="slot"></div>
-            <div class="button"></div>
-            <div class="button"></div>
-        </div>
-        <br>
-        <button class="qr-button" onclick="openQR()">Open QR</button>
-    </div>
-    <script>
-        // JavaScript to handle redirection and button visibility
-        setTimeout(function() {
-            window.location.href = "throughQR.html";
-        }, 2000);
+    <header>
+        <h1>Oh! You Found Me...</h1>
+    </header>
+    
+    <section class="intro">
+        <h1>I Am Sukarna Jana, Innovative Tech Architect</h1>
+        <p>I am a Full Stack Developer, Creating software, web/native apps, IOT devices, and robots</p>
+        <a href="https://docs.google.com/document/d/1D54PtUuHlL57AsJ-lHRUufUAdk0FnH8OZEr2gBDE5wI/edit?usp=sharing" class="button" target="_blank">Take My Resume</a>
+    </section>
 
-        setTimeout(function() {
-            document.querySelector('.qr-button').style.display = 'block';
-        }, 2100);
+    <section class="contact">
+        <h2>Contact Us</h2>
+        <div class="contact-links">
+            <a href="https://www.instagram.com/sukarnajana/" target="_blank">Main Insta</a>
+            <a href="https://www.instagram.com/sukarnascience/" target="_blank">Project Insta</a>
+            <a href="https://www.linkedin.com/in/sukarna-jana/" target="_blank">LinkedIn</a>
+            <a href="https://www.youtube.com/channel/UCKkr1oGBN5RbZ2LSdg-VOaQ" target="_blank">Youtube</a>
+        </div>
+    </section>
 
-        function openQR() {
-            window.location.href = "throughQR.html";
-        }
-    </script>
+    <section class="gallery">
+        <div class="tabs">
+            <button class="tab-button" onclick="showTab('ece')">ECE</button>
+            <button class="tab-button" onclick="showTab('cse')">CSE</button>
+            <button class="tab-button" onclick="showTab('3dprints')">3D Prints</button>
+        </div>
+        <div class="tab-content" id="ece">
+            <h3>ECE Gallery</h3>
+            <div class="gallery-images" id="ece-images"></div>
+        </div>
+        <div class="tab-content" id="cse" style="display:none;">
+            <h3>CSE Gallery</h3>
+            <div class="gallery-images" id="cse-images"></div>
+        </div>
+        <div class="tab-content" id="3dprints" style="display:none;">
+            <h3>3D Prints Gallery</h3>
+            <div class="gallery-images" id="3dprints-images"></div>
+        </div>
+    </section>
+    
+    <button id="theme-toggle">Toggle Theme</button>
+    
+    <script src="scripts.js"></script>
 </body>
 </html>
