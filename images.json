@@ -1,37 +1,182 @@
 {
     "ece": [
-        "https://drive.google.com/thumbnail?id=1rZ3vxf2lhtYue1Al6kDrD0B5xyy6GL1g",
-        "https://drive.google.com/thumbnail?id=1jaJ5QjkdZc-qu3SwrsNgyrdovznsoZL3",
-        "https://drive.google.com/thumbnail?id=1wk_ULgNvcLqOAvPdngxmCp_xWGYuwowa",
-        "https://drive.google.com/thumbnail?id=1LAlZVWlVLyExMS3IubnZKjeMDjqxbjNY",
-        "https://drive.google.com/thumbnail?id=1lgeSiEglrkegADjMvFmcGfMoj_4TxV8P",
-        "https://drive.google.com/thumbnail?id=1mLtCP_sd0widw6A4usnkfiL4Uo_zua4L",
-        "https://drive.google.com/thumbnail?id=1ZQy5SS-2FPZBIBhtbttVpBVyZEUSutTh",
-        "https://drive.google.com/thumbnail?id=1PaY9bdUc15_Vm02mPed_37pe78AHtJSU",
-        "https://drive.google.com/thumbnail?id=1H9RXVnSVyu7em2-5CnQ-u5rtMsd2eHYf",
-        "https://drive.google.com/thumbnail?id=1jNReSqy59nawcfqHFes-UU4HDv_1iqsK",
-        "https://drive.google.com/thumbnail?id=1tQVI-b_gAWHsd8MKmLhepDtAIZGIVRsH",
-        "https://drive.google.com/thumbnail?id=16k76AakYmcn4KZyw4S3DE4jYJfEDlVKQ",
-        "https://drive.google.com/thumbnail?id=1gJZt6X1nU9GiOJr9gbLCO7X7pDi9wYas",
-        "https://drive.google.com/thumbnail?id=1h-sarixF9qHAXtCl9-GPzU75MyK0rn9h",
-        "https://drive.google.com/thumbnail?id=1z0ZmhmK2aLR4DJE5OFgM09-I2yLWhZHt",
-        "https://drive.google.com/thumbnail?id=1jyaiWfLdfg6QV_Blnk8R1YQliGR-tOTr",
-        "https://drive.google.com/thumbnail?id=1JGdZQkILUuE92QdqWJLg79swcoadn-53",
-        "https://drive.google.com/thumbnail?id=10txBdUVk7qkrFE4fLbOM5gwzSeuGTzKi",
-        "https://drive.google.com/thumbnail?id=1BavD87dUGXQWlzSylbgviWg5_JF4lAIk",
-        "https://drive.google.com/thumbnail?id=1vXoyjJinKlvwQvk_-ZJDHgHanivBPRaQ"
+        {
+            "src": "https://drive.google.com/thumbnail?id=1mLtCP_sd0widw6A4usnkfiL4Uo_zua4L",
+            "title": "Humanoid robot",
+            "description": "Leading a team in Presidents University (Buildclub), Where our main agenda is to showcase our capability and make this rover as a service rover on ground to help guest for proper navigation around our campus",
+            "url": "https://github.com/BuildClub-PresidencyUniversity/humanoid_robot_nlp"
+        },
+        {
+            "src": "https://drive.google.com/thumbnail?id=1jaJ5QjkdZc-qu3SwrsNgyrdovznsoZL3",
+            "title": "CANSAT India 2023",
+            "description": "CanSat India which was host by two popular organin on India : INSpace and ISRO at Ahmedabad, Gujarat",
+            "url": "https://www.instagram.com/p/C6A71R5NmCz/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+        },
+        {
+            "src": "https://drive.google.com/thumbnail?id=1PaY9bdUc15_Vm02mPed_37pe78AHtJSU",
+            "title": "Robotic prosthetic hand",
+            "description": "A 3D printed eeg based on raspberry prosthetic hand.",
+            "url": "#"
+        },
+        {
+            "src": "https://drive.google.com/thumbnail?id=10txBdUVk7qkrFE4fLbOM5gwzSeuGTzKi",
+            "title": "Chinnu Robot",
+            "description": "A 3D printed ai based toy friendly robot which runs on ROS upon the Raspberry Pi with an arduino Nano for locomotion and Applet the concept of cloud robotics Were intens task used to be performed at local host cloud where it used to detect your emotions And try to be friendly with you based on that... ( Basically a talkative robot )",
+            "url": "https://github.com/Sukarnascience/Jaduu_Bot"
+        },
+        {
+            "src": "https://drive.google.com/thumbnail?id=1BavD87dUGXQWlzSylbgviWg5_JF4lAIk",
+            "title": "Self driving vehicle",
+            "description": "A final year project of My Collage (Batch: 2020), Where the rover uses LIDAR sensor, raspberry pi, Arduino Nano and drives on power bank",
+            "url": "#"
+        },
+        {
+            "src": "https://drive.google.com/thumbnail?id=1rZ3vxf2lhtYue1Al6kDrD0B5xyy6GL1g",
+            "title": "Car theft detection",
+            "description": "Made a project for My Collage Junior Team (Batch: 2021) , (Academics)IPR project for there Semester. Based on Raspberry Pi",
+            "url": "#"
+        },
+        {
+            "src": "https://drive.google.com/thumbnail?id=1wk_ULgNvcLqOAvPdngxmCp_xWGYuwowa",
+            "title": "Voice based home automation",
+            "description": "Made a project for My Collage Junior Team (Batch: 2021) , (Academics)IPR project for there Semester. Based on Raspberry Pi",
+            "url": "#"
+        },
+        {
+            "src": "https://drive.google.com/thumbnail?id=1LAlZVWlVLyExMS3IubnZKjeMDjqxbjNY",
+            "title": "Smart iot based visitor count (Foot Fall) and lighting control",
+            "description": "Made a project for My Collage Junior Team (Batch: 2021) , (Academics)IPR project for there Semester. Based on Raspberry Pi",
+            "url": "#"
+        },
+        {
+            "src": "https://drive.google.com/thumbnail?id=1lgeSiEglrkegADjMvFmcGfMoj_4TxV8P",
+            "title": "Home Decor",
+            "description": "LED vintage looking bulb with a 3D printed shadow frame hangin a cable at the center of the house to make it look more aesthetic and give a vibe",
+            "url": "#"
+        },
+        {
+            "src": "https://drive.google.com/thumbnail?id=1ZQy5SS-2FPZBIBhtbttVpBVyZEUSutTh",
+            "title": "Bluetooth based home automation",
+            "description": "Custom application with HC05 Blt Module with an arduino so smart control Home Appliances",
+            "url": "#"
+        },
+        {
+            "src": "https://drive.google.com/thumbnail?id=1H9RXVnSVyu7em2-5CnQ-u5rtMsd2eHYf",
+            "title": "Smart outdoor light",
+            "description": "Based on the sunlight intensity the light will turn on and off to keep the outdoor garden illuminated based on need",
+            "url": "#"
+        },
+        {
+            "src": "https://drive.google.com/thumbnail?id=1jNReSqy59nawcfqHFes-UU4HDv_1iqsK",
+            "title": "2 Channel Smart home automation (IOT)",
+            "description": "A smart home automation using ESP8266-01 Integrated with the home assistant (OK Google, ...)",
+            "url": "#"
+        },
+        {
+            "src": "https://drive.google.com/thumbnail?id=1tQVI-b_gAWHsd8MKmLhepDtAIZGIVRsH",
+            "title": "Smart outdoor light v2",
+            "description": "A device which automatically turns on after Sun goes down and after a shutter threshold/time the outer lights also turns off (Because there is no need of illuminating at the night time Once everyone goes to sleep )",
+            "url": "#"
+        },
+        {
+            "src": "https://drive.google.com/thumbnail?id=16k76AakYmcn4KZyw4S3DE4jYJfEDlVKQ",
+            "title": "Innovatix 2.0",
+            "description": "Competition held at Presidency University at 2023, this are my collection of bots which i made for the competition",
+            "url": "#"
+        },
+        {
+            "src": "https://drive.google.com/thumbnail?id=1gJZt6X1nU9GiOJr9gbLCO7X7pDi9wYas",
+            "title": "line follower robot",
+            "description": "A robot which follows the line and complete the maze the shortest time taken will be the winner.",
+            "url": "#"
+        },
+        {
+            "src": "https://drive.google.com/thumbnail?id=1h-sarixF9qHAXtCl9-GPzU75MyK0rn9h",
+            "title": "Robo racer",
+            "description": "Multiple difficult challenge terrains are given whether over should gain maximum point by touching the flags and reach the destination and the rover with the maximum point will be the winner",
+            "url": "#"
+        },
+        {
+            "src": "https://drive.google.com/thumbnail?id=1z0ZmhmK2aLR4DJE5OFgM09-I2yLWhZHt",
+            "title": "Robo soccer",
+            "description": "A robot basically to play soccer",
+            "url": "#"
+        },
+        {
+            "src": "https://drive.google.com/thumbnail?id=1jyaiWfLdfg6QV_Blnk8R1YQliGR-tOTr",
+            "title": "Pengu Robot",
+            "description": "A personalised AI Equipped robot, For talking like a smart assistant ( Custom trend on AIML library ), Do home automation has expression also to express the emotions has two axes servo motors to do neck movements...",
+            "url": "#"
+        },
+        {
+            "src": "https://drive.google.com/thumbnail?id=1JGdZQkILUuE92QdqWJLg79swcoadn-53",
+            "title": "Smart door lock",
+            "description": "using finger print or else a keypad unlock a door, A project which was meant for my junior students as their academic project IPA (Batch: 2022)",
+            "url": "#"
+        },
+        {
+            "src": "https://drive.google.com/thumbnail?id=1vXoyjJinKlvwQvk_-ZJDHgHanivBPRaQ",
+            "title": "Smart Dustbin",
+            "description": "A raspberry pi based smart dustbin which segregates the waste and separate at three different containers",
+            "url": "#"
+        }
     ],
     "cse": [
-        "https://drive.google.com/thumbnail?id=1VOZwQc6fFLjNv_m-dhl4gyqE3lBLKlke",
-        "https://drive.google.com/thumbnail?id=14OGJPM16nqLPY9nY1R93gcoqI0UyNEG_",
-        "https://drive.google.com/thumbnail?id=1_iP2cJtdpjhJIl72W-JidTzGCyoQym59"
+        {
+            "src": "https://drive.google.com/thumbnail?id=1VOZwQc6fFLjNv_m-dhl4gyqE3lBLKlke",
+            "title": "Humanoid main brain",
+            "description": "Its Jetson Nano which is running Ubuntu with ROS2 to make the entire humanoid alive",
+            "url": "https://github.com/BuildClub-PresidencyUniversity"
+        },
+        {
+            "src": "https://drive.google.com/thumbnail?id=14OGJPM16nqLPY9nY1R93gcoqI0UyNEG_",
+            "title": "Mini media player and home automation",
+            "description": "Runs on raspberry pi 3B+ Where it serves media player as a custom local host ott platform as well as little bit of home automation to control few of the lights from the mobile application",
+            "url": "#"
+        },
+        {
+            "src": "https://drive.google.com/thumbnail?id=1_iP2cJtdpjhJIl72W-JidTzGCyoQym59",
+            "title": "Self driving car",
+            "description": "Made a project for final year student of PU batch (2020) Where the entire vehicle runs on object detection and few LIDAR sensors to scan the environment as a safety precaution with the camera",
+            "url": "#"
+        }
     ],
     "3dprints": [
-        "https://drive.google.com/thumbnail?id=1auvpKUOIQqi9MyXVfuPl8WFCVzDMpK9G",
-        "https://drive.google.com/thumbnail?id=1hWeJXAusPE9mCuQZZoCMfEoXPo6VCfSb",
-        "https://drive.google.com/thumbnail?id=1ubmDuPVaEKi3OUjCuEthmpq4egxmKlPV",
-        "https://drive.google.com/thumbnail?id=1uZoXYMS8q98YcLLzSUV0FdIFCCj66JKJ",
-        "https://drive.google.com/thumbnail?id=1fiHrdwDn5sPVBOwgDB8yFVEreWcU_htx",
-        "https://drive.google.com/thumbnail?id=1O4Ax0IRuP5VPwS-DuEt9m7xew35RerxQ"
+        {
+            "src": "https://drive.google.com/thumbnail?id=1auvpKUOIQqi9MyXVfuPl8WFCVzDMpK9G",
+            "title": "3D Printed Ghost",
+            "description": "Printed in Ender 3D printer the material which is used is PLA",
+            "url": "#"
+        },
+        {
+            "src": "https://drive.google.com/thumbnail?id=1hWeJXAusPE9mCuQZZoCMfEoXPo6VCfSb",
+            "title": "3D Printed Cat in Mirror mode",
+            "description": "Printed in Ender 3D printer the material which is used is PLA",
+            "url": "#"
+        },
+        {
+            "src": "https://drive.google.com/thumbnail?id=1ubmDuPVaEKi3OUjCuEthmpq4egxmKlPV",
+            "title": "3D Printed Bulbasaur 01",
+            "description": "Printed in Ender 3D printer the material which is used is Translucent PLA",
+            "url": "#"
+        },
+        {
+            "src": "https://drive.google.com/thumbnail?id=1uZoXYMS8q98YcLLzSUV0FdIFCCj66JKJ",
+            "title": "3D Printed Bulbasaur 02",
+            "description": "Printed in Ender 3D printer the material which is used is ABS, And painted with postal colours by the help of @Monika B S & Khanishree B S",
+            "url": "#"
+        },
+        {
+            "src": "https://drive.google.com/thumbnail?id=1fiHrdwDn5sPVBOwgDB8yFVEreWcU_htx",
+            "title": "3D Printed Robotic Cat",
+            "description": "Still under development the entire body is made of 3D printed pla material | COMING SOON",
+            "url": "#"
+        },
+        {
+            "src": "https://drive.google.com/thumbnail?id=1O4Ax0IRuP5VPwS-DuEt9m7xew35RerxQ",
+            "title": "3D Printed Home Decor",
+            "description": "Multiple miniature home decor has been made using PLA, TPU, ABS etc...",
+            "url": "#"
+        }
     ]
 }
