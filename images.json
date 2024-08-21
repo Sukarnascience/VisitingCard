@@ -31,6 +31,12 @@
             "url": "#"
         },
         {
+            "src": "https://drive.google.com/thumbnail?id=1X5UKo8m_ajZ3Nvnomela6sxO0DSl7NeK",
+            "title": "Advanced PCB Design for ScanPick: Efficient Sensor Data Collection and Communication",
+            "description": "I designed and developed a custom PCB for ScanPick to enhance their vending machine operations. This innovative board efficiently collects sensor data from various floors of the vending machine, including food and other sensors, and seamlessly transmits this information to a central PC using Canbus. The design ensures reliable data acquisition and communication, enabling better monitoring and management of the vending machine's functionality. The solution is tailored to meet the specific needs of ScanPick, providing a robust and scalable system for data handling and integration.",
+            "url": "#"
+        },
+        {
             "src": "https://drive.google.com/thumbnail?id=1rZ3vxf2lhtYue1Al6kDrD0B5xyy6GL1g",
             "title": "Car theft detection",
             "description": "Made a project for My Collage Junior Team (Batch: 2021) , (Academics)IPR project for there Semester. Based on Raspberry Pi",
@@ -123,6 +129,42 @@
     ],
     "cse": [
         {
+            "src": "https://drive.google.com/thumbnail?id=1gseD8Aj7Eab90Bp7rrjJrPEI8HxSYHt5",
+            "title": "Total Harmonic Distortion (THD) Analysis Software for EEE Department",
+            "description": "I developed a specialized software solution for the Electrical and Electronics Engineering (EEE) department to perform Total Harmonic Distortion (THD) analysis. The software leverages Python with a focus on CustomTkinter for a user-friendly graphical interface, Serial for data communication, and Matplotlib for detailed data visualization. This tool is designed to analyze and visualize harmonic distortions in electrical signals, providing accurate and insightful THD metrics. It enhances the department's capability to conduct thorough signal analysis, aiding in research and academic projects related to electrical harmonics.",
+            "url": "https://github.com/Sukarnascience/THD_Analysis_Tool"
+        },
+        {
+            "src": "https://drive.google.com/thumbnail?id=1zWvq5dlxoprN2IN2NdhgbRIe6SsWRdkL",
+            "title": "Comprehensive Management Software for Temple Operations",
+            "description": "I developed an integrated software solution for a temple to streamline its operations and management. The software, built using CustomTkinter for a modern and intuitive graphical user interface, manages all aspects of item tracking, including IN/OUT transactions, attendance records, and material quantity monitoring. The backend is powered by MySQL, ensuring efficient and reliable data management. This solution simplifies inventory control and attendance tracking, providing a comprehensive tool for the temple's operational needs and enhancing overall organizational efficiency.",
+            "url": "https://github.com/Sukarnascience/HeritageHaven"
+        },
+        {
+            "src": "https://drive.google.com/thumbnail?id=1rvFMwcfK5D_p_Waov_LRbX7JyZCkVvhX",
+            "title": "Custom Software for CANSAT 2023/24: Satellite Telemetry Solution",
+            "description": "I developed a specialized software solution for the CANSAT 2023/24 competition in India, focusing on satellite telemetry. This software was built using a custom Tkinter interface for a user-friendly graphical environment and socket programming for robust data communication. The application effectively handles real-time telemetry data, ensuring accurate and reliable tracking of satellite performance. The combination of Tkinter and socket programming enables seamless interaction and data processing, providing a powerful tool for monitoring and analyzing satellite systems during the competition. (Due to T&C Its Private)",
+            "url": "#"
+        },
+        {
+            "src": "https://drive.google.com/thumbnail?id=1jSGYdW63dC9CPb818Y13WntR7YosIoRW",
+            "title": "Sentiment Analysis with Gemini and Custom GUI: A Docker-Integrated Solution",
+            "description": "I created an advanced sentiment analysis tool using the Gemini AI model, integrated with a custom-designed graphical user interface (GUI). This tool offers precise sentiment evaluation based on user-defined prompts and is packaged within a Docker container for ease of deployment and scalability. The Docker setup ensures that the application runs consistently across various environments, providing reliable and accessible sentiment analysis capabilities. This solution streamlines the process of analyzing textual data and visualizes results in an intuitive and user-friendly interface, making it an effective tool for both developers and end-users.",
+            "url": "https://www.youtube.com/watch?v=LSU2Ycjkpwg"
+        },
+        {
+            "src": "https://drive.google.com/thumbnail?id=1KrTvubVxg0UIPrlXjvjaMwoYBlh-l19P",
+            "title": "AR Based Bike catalog",
+            "description": "Explore the future of bike shopping with our innovative AR-Based Bike Catalog app, seamlessly integrating cutting-edge technology to enhance your buying experience. Designed for Android devices using Kotlin (Android Native) and powered by the Vuforia Engine (Unity), this app offers an immersive and interactive way to browse through a diverse range of bikes.",
+            "url": "https://github.com/Sukarnascience/AR_Bike_World"
+        },
+        {
+            "src": "https://drive.google.com/thumbnail?id=17k7Gu1FxFmc_Szl7ZmVg1QyGVbIYdhBE",
+            "title": "Custom Software for CanSat 2024/25: Satellite Telemetry Solution",
+            "description": "I developed a comprehensive software solution for the CanSat 2024/25 competition, focusing on satellite telemetry and data management. The system is built using Flask and Python, with a web interface enhanced by Graph.js for dynamic data visualization and Bootstrap for a responsive, user-friendly design. Additionally, the application leverages Progressive Web App (PWA) technology to provide a seamless, offline-capable experience. This solution enables real-time monitoring and analysis of satellite data, supporting participants in making informed decisions during the competition and ensuring robust performance and reliability. (Source Code is Private due to its Ongoing Project)",
+            "url": "#"
+        },
+        {
             "src": "https://drive.google.com/thumbnail?id=1VOZwQc6fFLjNv_m-dhl4gyqE3lBLKlke",
             "title": "Humanoid main brain",
             "description": "Its Jetson Nano which is running Ubuntu with ROS2 to make the entire humanoid alive",
@@ -142,6 +184,12 @@
         }
     ],
     "3dprints": [
+        {
+            "src": "https://drive.google.com/thumbnail?id=1j4imlZu8mxBQludLqnVVxJmGdhBDqiPi",
+            "title": "Gyroid Shape",
+            "description": "The Gyroid structure presents several advantages such as free-standing, highly ordered and interconnected pore network, and high specific surface area",
+            "url": "#"
+        },
         {
             "src": "https://drive.google.com/thumbnail?id=1auvpKUOIQqi9MyXVfuPl8WFCVzDMpK9G",
             "title": "3D Printed Ghost",
