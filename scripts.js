@@ -17,34 +17,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 return img;
             }
 
-            data.ece.forEach(imageData => {
-                eceImagesContainer.appendChild(createImageElement(imageData));
-            });
+            function appendImages(container, images) {
+                images.forEach(imageData => {
+                    container.appendChild(createImageElement(imageData));
+                });
+                // Duplicate images for seamless scrolling
+                images.forEach(imageData => {
+                    container.appendChild(createImageElement(imageData));
+                });
+            }
 
-            data.cse.forEach(imageData => {
-                cseImagesContainer.appendChild(createImageElement(imageData));
-            });
-
-            data['3dprints'].forEach(imageData => {
-                printsImagesContainer.appendChild(createImageElement(imageData));
-            });
+            appendImages(eceImagesContainer, data.ece);
+            appendImages(cseImagesContainer, data.cse);
+            appendImages(printsImagesContainer, data['3dprints']);
         });
-
-    // Theme toggle
-    /*
-    const themeToggleButton = document.getElementById('theme-toggle');
-    themeToggleButton.addEventListener('click', () => {
-        document.body.classList.toggle('dark-theme');
-    });
-    */
-
-    // Event listeners for tab buttons
-    document.querySelectorAll('.tab-button').forEach(button => {
-        button.addEventListener('click', (e) => {
-            const tabId = e.target.textContent.toLowerCase().replace(' ', '');
-            showTab(tabId);
-        });
-    });
 
     // Show popup
     function showPopup(imageData) {
@@ -60,15 +46,4 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.image-popup-close').addEventListener('click', () => {
         document.getElementById('image-popup').style.display = 'none';
     });
-
-    // Function to switch tabs
-    function showTab(tabId) {
-        const tabs = document.querySelectorAll('.tab-content');
-        tabs.forEach(tab => {
-            tab.style.display = tab.id === tabId ? 'block' : 'none';
-        });
-    }
-
-    // Load images for default tab
-    showTab('ece');
 });
