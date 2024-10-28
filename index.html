@@ -6,70 +6,127 @@
     <title>My Webpage</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="vc_logo.png" type="image/png">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        .intro {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .beebotix {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+
+        .card {
+            width: 300px;
+            height: 200px;
+            background: #ffffff;
+            border-radius: 10px;
+            border: 2px solid #ccc;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative; /* Position relative for absolute children */
+        }
+
+        .card h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        .contact {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .contact-links a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #007BFF;
+        }
+
+        .scrolling-gallery {
+            margin: 20px 0;
+            padding: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #333;
+            color: #fff;
+        }
+
+        footer .affiliations img {
+            margin: 5px;
+            height: 30px; /* Adjust as needed */
+        }
+    </style>
 </head>
 <body>
-    <!--
-    <div class="background">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-     </div>
-    -->
-    <!--<header>
-        <h1>Oh! You Found Me...</h1>
-    </header>
--->
     <section class="intro">
         <h1>I Am Sukarna Jana, Innovative Tech Architect</h1>
         <p>I am a Full Stack Developer, Creating software, web/native apps, IOT devices, and robots</p>
-        <!--<a href="https://docs.google.com/document/d/1D54PtUuHlL57AsJ-lHRUufUAdk0FnH8OZEr2gBDE5wI/edit?usp=sharing" class="button" target="_blank">Take My Resume</a>-->
     </section>
+
+    <section class="beebotix">
+        <div class="card js-tilt" data-tilt data-tilt-glare="true" data-tilt-maxglare=".5" style="transform-style: preserve-3d;">
+            <h2>Beebotix</h2>
+            <p>A new company specializing in service-based robots, development boards, and innovations in the field of IoT and underwater research.</p>
+        </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tilt.js/1.2.1/tilt.jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.js-tilt').tilt({
+                glare: true,
+                maxGlare: .5
+            });
+        });
+    </script>
 
     <section class="contact">
         <h2>Contact Me On</h2>
         <div class="contact-links">
-            <!--<a href="https://www.instagram.com/sukarnajana/" target="_blank">Main Insta</a>-->
             <a href="https://www.instagram.com/sukarnascience/" target="_blank"><u>Instagram</u></a>
-            <!--<a href="https://www.linkedin.com/in/sukarna-jana/" target="_blank">LinkedIn</a>-->
             <a href="https://www.youtube.com/channel/UCKkr1oGBN5RbZ2LSdg-VOaQ" target="_blank"><u>Youtube</u></a>
-            <a href="https://www.google.com/search?q=sukarna+jana&sca_esv=b6e74073d32a9e37&sca_upv=1&sxsrf=ADLYWIJcchuT2g1zBsGRHgA13dJwJI859g%3A1723911551094&ei=f83AZuq6BZaMnesPlJCIgAg&ved=0ahUKEwiq9oH9tvyHAxUWRmcHHRQIAoAQ4dUDCA8&uact=5&oq=sukarna+jana&gs_lp=Egxnd3Mtd2l6LXNlcnAiDHN1a2FybmEgamFuYTIEECMYJzIIEAAYgAQYogQyCBAAGIAEGKIESKghUNcDWNMXcAJ4AZABAJgBowGgAecEqgEDMC40uAEDyAEA-AEBmAIGoAKBBcICChAAGLADGNYEGEfCAgcQIxiwAhgnmAMAiAYBkAYCkgcDMi40oAeTDg&sclient=gws-wiz-serp" target="_blank"><u>Google Me</a>
+            <a href="https://www.google.com/search?q=sukarna+jana" target="_blank"><u>Google Me</u></a>
         </div>
     </section>
 
-    <section class="gallery">
-        <div class="tabs">
-            <button class="tab-button" onclick="showTab('ece')">ECE</button>
-            <button class="tab-button" onclick="showTab('cse')">CSE</button>
-            <button class="tab-button" onclick="showTab('3dprints')">3D Prints</button>
+    <section class="scrolling-gallery">
+        <h3>ECE Gallery</h3>
+        <div class="scroll-container" id="ece-scroll">
+            <div class="scroll-content" id="ece-images"></div>
         </div>
-        <div class="tab-content" id="ece">
-            <h3>ECE Gallery</h3>
-            <div class="gallery-images" id="ece-images"></div>
+    </section>
+
+    <section class="scrolling-gallery">
+        <h3>CSE Gallery</h3>
+        <div class="scroll-container" id="cse-scroll">
+            <div class="scroll-content" id="cse-images"></div>
         </div>
-        <div class="tab-content" id="cse" style="display:none;">
-            <h3>CSE Gallery</h3>
-            <div class="gallery-images" id="cse-images"></div>
-        </div>
-        <div class="tab-content" id="3dprints" style="display:none;">
-            <h3>3D Prints Gallery</h3>
-            <div class="gallery-images" id="3dprints-images"></div>
+    </section>
+
+    <section class="scrolling-gallery">
+        <h3>3D Prints Gallery</h3>
+        <div class="scroll-container" id="prints-scroll">
+            <div class="scroll-content" id="3dprints-images"></div>
         </div>
     </section>
 
@@ -82,10 +139,18 @@
             <a id="popup-url" href="" target="_blank">Visit Source</a>
         </div>
     </div>
-    
-    
-    <!--<button id="theme-toggle">Toggle Theme</button>-->
-    
+
+    <footer>
+        <h4>Affiliations</h4>
+        <div class="affiliations">
+            <img src="affiliation1.png" alt="Affiliation 1">
+            <img src="affiliation2.png" alt="Affiliation 2">
+            <img src="affiliation3.png" alt="Affiliation 3">
+            <img src="affiliation4.png" alt="Affiliation 4">
+            <img src="affiliation5.png" alt="Affiliation 5">
+        </div>
+    </footer>
+
     <script src="scripts.js"></script>
 </body>
 </html>
