@@ -78,26 +78,28 @@
     </style>
 </head>
 <body>
+    
     <section class="intro">
         <h1>I Am Sukarna Jana, Innovative Tech Architect</h1>
         <p>I am a Full Stack Developer, Creating software, web/native apps, IOT devices, and robots</p>
     </section>
 
     <section class="beebotix">
-        <div class="card js-tilt" data-tilt data-tilt-glare="true" data-tilt-maxglare=".5" style="transform-style: preserve-3d;">
-            <h2>Beebotix</h2>
-            <p>A new company specializing in service-based robots, development boards, and innovations in the field of IoT and underwater research.</p>
+        <div class="card js-tilt" data-tilt data-tilt-glare="true" data-tilt-maxglare=".5" style="transform-style: preserve-3d; background-color: #333;">
+            <span class="new-tag">NEW</span>
+            <h2 style="color: yellow;">Beebotix</h2>
+            <p style="color: yellow;">A new company specializing in service-based robots, development boards, and innovations in the field of IoT and underwater research.</p>
         </div>
     </section>
+    
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tilt.js/1.2.1/tilt.jquery.min.js"></script>
     <script>
-        $(document).ready(function(){
-            $('.js-tilt').tilt({
-                glare: true,
-                maxGlare: .5
-            });
+        VanillaTilt.init(document.querySelector(".card"), {
+            max: 25,
+            speed: 400,
+            glare: true,
         });
     </script>
 
@@ -141,16 +143,17 @@
         </div>
     </div>
 
-    <footer>
-        <h4>Affiliations</h4>
+    <section class="affiliations">
+        <h3 style="text-align: center;">Affiliations</h3>
+        <br>
         <div class="affiliations">
-            <img src="affiliation1.png" alt="Affiliation 1">
-            <img src="affiliation2.png" alt="Affiliation 2">
-            <img src="affiliation3.png" alt="Affiliation 3">
-            <img src="affiliation4.png" alt="Affiliation 4">
-            <img src="affiliation5.png" alt="Affiliation 5">
+            <img src="./img/1-removebg-preview.png" alt="Affiliation 1">
+            <img src="./img/2-removebg-preview.png" alt="Affiliation 2">
+            <img src="./img/3-removebg-preview.png" alt="Affiliation 3">
+            <img src="./img/4-removebg-preview.png" alt="Affiliation 4">
+            <img src="./img/5-removebg-preview.png" alt="Affiliation 5">
         </div>
-    </footer>
+    </section>
 
     <script src="scripts.js"></script>
 </body>
