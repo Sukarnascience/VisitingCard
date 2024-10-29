@@ -7,7 +7,7 @@ body {
     overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
-.intro, .contact, footer {
+.intro, .contact {
     text-align: center;
     padding: 20px;
     margin: 0 15px; /* Added margin for mobile spacing */
@@ -29,7 +29,7 @@ body {
 
 .scroll-content {
     display: flex;
-    animation: scroll 20s linear infinite; /* Adjust speed here */
+    animation: scroll 50s linear infinite; /* Adjust speed here */
 }
 
 .scroll-content img {
@@ -39,13 +39,35 @@ body {
 }
 
 .card {
-    margin: 15px;
-    padding: 20px;
-    border: 1px solid #ccc;
+    width: 300px;
+    height: 200px;
+    background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)); /* Glossy yellow gradient */
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid #ccc;
+    padding: 20px;
     text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative; /* Position relative for absolute children */
+    overflow: hidden; /* Prevent overflow for the new tag */
 }
+
+.card h2, .card p {
+    color: #FFD700; /* Yellow text color */
+}
+
+.new-tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(255, 0, 0, 0.8);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
 
 .image-popup {
     display: none;
@@ -106,3 +128,17 @@ body {
     text-align: center;
     transition: transform 0.2s; /* Smooth transition */
 }
+
+.affiliations {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Wrap images to fit smaller screens */
+    margin-top: 10px;
+}
+
+.affiliations img {
+    margin: 5px;
+    height: 100px; /* Adjust as needed */
+    max-width: 100px; /* Ensure images don't exceed a width */
+}
+
