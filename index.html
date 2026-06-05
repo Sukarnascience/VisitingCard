@@ -1,203 +1,702 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Redirecting...</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sukarna Jana - BeeBotix</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Caveat:wght@400;600;700&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #fdf6e3;
+    --ink: #1a1208;
+    --amber: #d4800a;
+    --pixel-border: #2c1d0e;
+    --scan: rgba(0,0,0,0.03);
+    --bee-yellow: #f5c518;
+    --bee-dark: #1a1208;
+    --grid: #e8dcc8;
+  }
 
-  <!-- Dot Matrix Font -->
-  <link href="https://fonts.cdnfonts.com/css/square-dot-matrix" rel="stylesheet">
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
 
-  <style>
-    body, html {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow: hidden;
-      background: #f5f5f5;
-      font-family: 'Square Dot Matrix', monospace;
-      color: #333;
-    }
-    #large-header {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      z-index: 1;
-    }
-    #network-canvas {
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
-    .center {
-      position: relative;
-      z-index: 2;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-    h1 {
-      font-size: 2.8rem;
-      color: #ffbd59;
-      margin: 0;
-      border-right: 2px solid #333;
-      white-space: nowrap;
-      overflow: hidden;
-      width: 0;
-      animation: typing 2.5s steps(12, end) forwards, blink 0.7s infinite;
-    }
-    .countdown {
-      font-size: 1.4rem;
-      margin-top: 15px;
-      color: #555;
-      opacity: 0;
-      animation: fadeIn 1.5s ease-in-out forwards;
-      animation-delay: 2.6s;
-    }
-    .bottom-left {
-      position: fixed;
-      bottom: 15px;
-      left: 20px;
-      font-size: 0.95rem;
-      color: #333;
-      opacity: 0.85;
-      z-index: 2;
-    }
-    .bottom-left a {
-      color: #ffbd59;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .bottom-left a:hover {
-      text-decoration: underline;
-    }
-    @keyframes typing { from { width: 0; } to { width: 14ch; } }
-    @keyframes blink { 50% { border-color: transparent; } }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Caveat', cursive;
+    overflow-x: hidden;
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Crect x='0' y='0' width='8' height='8' fill='%231a1208'/%3E%3Crect x='8' y='8' width='8' height='8' fill='%231a1208'/%3E%3C/svg%3E") 0 0, crosshair;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(0deg, var(--scan) 0px, var(--scan) 1px, transparent 1px, transparent 3px);
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 32px 32px;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  .page-wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 24px 60px;
+  }
+
+  /* ---- LOADER ---- */
+  #loader {
+    position: fixed;
+    inset: 0;
+    background: var(--ink);
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    transition: opacity 0.3s step-end;
+  }
+  #loader.hidden { opacity: 0; pointer-events: none; }
+  .load-title { font-family: 'Press Start 2P', monospace; font-size: 9px; color: var(--bee-yellow); letter-spacing: 2px; }
+  .load-bar-outer { width: 240px; height: 20px; border: 4px solid var(--bee-yellow); box-shadow: 4px 4px 0 var(--amber); overflow: hidden; }
+  .load-bar-inner { height: 100%; background: var(--bee-yellow); width: 0%; animation: loading 1.6s steps(12) forwards; }
+  .load-text { font-family: 'Press Start 2P', monospace; font-size: 10px; color: var(--bee-yellow); letter-spacing: 3px; animation: blink 0.8s step-end infinite; }
+  @keyframes loading { to { width: 100%; } }
+
+  /* ---- HEADER ---- */
+  header { padding: 48px 0 32px; text-align: center; position: relative; }
+
+  .logo-area { display: inline-block; position: relative; }
+
+  .logo-pixel-frame {
+    display: inline-block;
+    padding: 16px;
+    border: 4px solid var(--pixel-border);
+    box-shadow: 6px 6px 0 var(--pixel-border);
+    background: white;
+    animation: float 3s ease-in-out infinite;
+  }
+  .logo-pixel-frame img { width: 96px; height: 96px; object-fit: contain; image-rendering: pixelated; }
+
+  .bee-fallback {
+    width: 96px; height: 96px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .bee-fallback svg { width: 64px; height: 64px; }
+
+  @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+  .sparkle { position: absolute; width: 8px; height: 8px; background: var(--amber); animation: blink 1.4s step-end infinite; }
+  .sparkle:nth-child(1) { top: 0; left: 20px; animation-delay: 0s; }
+  .sparkle:nth-child(2) { top: 12px; right: 0; animation-delay: 0.3s; }
+  .sparkle:nth-child(3) { bottom: 0; left: 0; animation-delay: 0.6s; }
+  .sparkle:nth-child(4) { bottom: 16px; right: 20px; animation-delay: 0.9s; }
+
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+  .name-block { margin-top: 28px; }
+
+  .pixel-tag {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 9px;
+    color: var(--amber);
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+    display: block;
+    animation: typewriter 2s steps(20) forwards;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  @keyframes typewriter { to { width: 100%; } }
+
+  h1 {
+    font-family: 'Special Elite', cursive;
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    letter-spacing: -1px;
+    color: var(--ink);
+    line-height: 1.1;
+    position: relative;
+    display: inline-block;
+  }
+  h1 .underline-pixel {
+    position: absolute; bottom: -6px; left: 0; height: 4px; width: 100%;
+    background: repeating-linear-gradient(90deg, var(--amber) 0px, var(--amber) 8px, transparent 8px, transparent 12px);
+  }
+
+  .founder-badge {
+    display: inline-block;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 7px;
+    background: var(--bee-yellow);
+    color: var(--bee-dark);
+    padding: 6px 12px;
+    border: 3px solid var(--pixel-border);
+    box-shadow: 3px 3px 0 var(--pixel-border);
+    margin-top: 20px;
+    letter-spacing: 1px;
+    animation: pulse-badge 2s step-end infinite;
+  }
+  @keyframes pulse-badge { 0%, 100% { box-shadow: 3px 3px 0 var(--pixel-border); } 50% { box-shadow: 5px 5px 0 var(--pixel-border); } }
+
+  /* ---- DIVIDER ---- */
+  .pixel-divider {
+    height: 8px; margin: 36px 0;
+    background: repeating-linear-gradient(90deg,
+      var(--pixel-border) 0px, var(--pixel-border) 8px,
+      var(--bee-yellow) 8px, var(--bee-yellow) 16px,
+      var(--amber) 16px, var(--amber) 24px,
+      var(--bee-yellow) 24px, var(--bee-yellow) 32px);
+    border-top: 3px solid var(--pixel-border);
+    border-bottom: 3px solid var(--pixel-border);
+  }
+
+  /* ---- PANELS ---- */
+  .panel {
+    background: white;
+    border: 4px solid var(--pixel-border);
+    box-shadow: 6px 6px 0 var(--pixel-border);
+    padding: 28px 32px;
+    position: relative;
+    margin-bottom: 40px;
+  }
+  .section-label {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px;
+    color: white;
+    background: var(--pixel-border);
+    padding: 6px 12px;
+    position: absolute;
+    top: -18px;
+    left: 20px;
+    letter-spacing: 1px;
+  }
+
+  .about-text { font-family: 'Caveat', cursive; font-size: 1.45rem; line-height: 1.7; color: var(--ink); }
+  .about-text strong { font-family: 'Special Elite', cursive; font-size: 1.6rem; color: var(--amber); }
+  .cursor-blink { display: inline-block; width: 10px; height: 18px; background: var(--amber); margin-left: 3px; vertical-align: middle; animation: blink 1s step-end infinite; }
+
+  /* ---- BEE RUNNER ---- */
+  .bee-row { height: 36px; position: relative; overflow: hidden; margin: 4px 0 28px; }
+  .pixel-bee {
+    position: absolute;
+    top: 6px;
+    animation: fly-bee 7s linear infinite;
+  }
+  .pixel-bee svg { width: 28px; height: 28px; }
+  @keyframes fly-bee {
+    0%   { left: -50px; transform: scaleX(1); }
+    49%  { left: calc(100% + 50px); transform: scaleX(1); }
+    50%  { left: calc(100% + 50px); transform: scaleX(-1); }
+    99%  { left: -50px; transform: scaleX(-1); }
+    100% { left: -50px; transform: scaleX(1); }
+  }
+
+  /* ---- WEBSITES SECTION ---- */
+  .websites-label {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--ink);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .websites-label::after {
+    content: '';
+    flex: 1;
+    height: 3px;
+    background: repeating-linear-gradient(90deg, var(--pixel-border) 0 6px, transparent 6px 10px);
+  }
+
+  /* Main BeeBotix card */
+  .main-site {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    text-decoration: none;
+    background: var(--ink);
+    border: 4px solid var(--pixel-border);
+    box-shadow: 7px 7px 0 var(--amber);
+    padding: 20px 24px;
+    margin-bottom: 14px;
+    position: relative;
+    transition: transform 0.08s step-end, box-shadow 0.08s step-end;
+    color: var(--bee-yellow);
+  }
+  .main-site:hover { transform: translate(-3px, -3px); box-shadow: 10px 10px 0 var(--amber); }
+  .main-site:active { transform: translate(2px, 2px); box-shadow: 3px 3px 0 var(--amber); }
+
+  .main-site-icon { flex-shrink: 0; width: 40px; height: 40px; }
+  .main-site-icon svg { width: 40px; height: 40px; }
+
+  .main-site-info { flex: 1; }
+  .main-site-name {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 6px;
+  }
+  .main-site-desc {
+    font-family: 'Caveat', cursive;
+    font-size: 1.1rem;
+    color: #ccc;
+    display: block;
+  }
+  .main-site-arrow {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 14px;
+    color: var(--bee-yellow);
+    flex-shrink: 0;
+  }
+
+  /* Branch header */
+  .branch-header {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 7px;
+    color: var(--amber);
+    letter-spacing: 3px;
+    margin: 22px 0 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .branch-header::before, .branch-header::after {
+    content: '';
+    height: 2px;
+    flex: 1;
+    background: repeating-linear-gradient(90deg, var(--amber) 0 4px, transparent 4px 8px);
+  }
+
+  /* Branch grid */
+  .branch-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 44px;
+  }
+
+  .branch-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-decoration: none;
+    background: white;
+    border: 4px solid var(--pixel-border);
+    box-shadow: 5px 5px 0 var(--pixel-border);
+    padding: 18px 16px 14px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.08s step-end, box-shadow 0.08s step-end;
+    color: var(--ink);
+  }
+  .branch-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--bee-yellow);
+    transform: translateY(100%);
+    transition: transform 0.1s step-end;
+    z-index: 0;
+  }
+  .branch-card:hover::before { transform: translateY(0); }
+  .branch-card:hover { transform: translate(-3px, -3px); box-shadow: 8px 8px 0 var(--pixel-border); }
+  .branch-card:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--pixel-border); }
+
+  .corner { position: absolute; width: 14px; height: 14px; border: 3px solid var(--amber); z-index: 1; }
+  .corner-tl { top: -3px; left: -3px; border-right: none; border-bottom: none; }
+  .corner-tr { top: -3px; right: -3px; border-left: none; border-bottom: none; }
+  .corner-bl { bottom: -3px; left: -3px; border-right: none; border-top: none; }
+  .corner-br { bottom: -3px; right: -3px; border-left: none; border-top: none; }
+
+  .branch-icon { position: relative; z-index: 1; width: 32px; height: 32px; }
+  .branch-icon svg { width: 32px; height: 32px; }
+
+  .branch-name {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 6px;
+    color: var(--ink);
+    display: block;
+    line-height: 1.9;
+    letter-spacing: 0.5px;
+    position: relative;
+    z-index: 1;
+    word-break: break-all;
+  }
+
+  .branch-tag {
+    font-family: 'Caveat', cursive;
+    font-size: 0.95rem;
+    color: #888;
+    display: block;
+    position: relative;
+    z-index: 1;
+  }
+  .branch-card:hover .branch-tag { color: var(--ink); }
+
+  .branch-arrow {
+    position: absolute;
+    bottom: 10px;
+    right: 12px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px;
+    color: var(--pixel-border);
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.1s step-end;
+  }
+  .branch-card:hover .branch-arrow { opacity: 1; }
+
+  /* ---- SOCIAL FOOTER ---- */
+  footer {
+    border: 4px solid var(--pixel-border);
+    box-shadow: 6px 6px 0 var(--pixel-border);
+    background: var(--ink);
+    padding: 28px 32px;
+    position: relative;
+  }
+  footer .section-label { background: var(--bee-yellow); color: var(--ink); top: -18px; left: 20px; }
+
+  .social-row { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; align-items: center; }
+
+  .social-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    background: var(--cream);
+    border: 3px solid var(--bee-yellow);
+    box-shadow: 3px 3px 0 var(--bee-yellow);
+    padding: 8px 14px;
+    transition: transform 0.08s step-end, box-shadow 0.08s step-end, background 0.08s step-end;
+    color: var(--ink);
+  }
+  .social-link:hover { background: var(--bee-yellow); transform: translate(-2px, -2px); box-shadow: 5px 5px 0 var(--bee-yellow); }
+  .social-link:active { transform: translate(1px, 1px); box-shadow: 1px 1px 0 var(--bee-yellow); }
+  .social-icon { width: 20px; height: 20px; flex-shrink: 0; }
+  .social-name { font-family: 'Press Start 2P', monospace; font-size: 6px; letter-spacing: 1px; }
+
+  .pixel-counter {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 7px;
+    color: var(--bee-yellow);
+    text-align: center;
+    margin-top: 18px;
+    letter-spacing: 2px;
+    opacity: 0.7;
+  }
+
+  @media (max-width: 600px) {
+    .branch-grid { grid-template-columns: 1fr 1fr; }
+    .about-text { font-size: 1.2rem; }
+    h1 { font-size: 2rem; }
+    .main-site-desc { display: none; }
+  }
+  @media (max-width: 380px) {
+    .branch-grid { grid-template-columns: 1fr; }
+  }
+</style>
 </head>
 <body>
 
-  <div id="large-header">
-    <canvas id="network-canvas"></canvas>
-    <div class="center">
-      <h1>Redirecting...</h1>
-      <div class="countdown">Redirecting in <span id="timer">5</span>s</div>
+<div id="loader">
+  <div class="load-title">BEEBOTIX OS v1.0</div>
+  <div class="load-bar-outer"><div class="load-bar-inner"></div></div>
+  <div class="load-text">LOADING...</div>
+</div>
+
+<div class="page-wrap">
+
+  <!-- Header -->
+  <header>
+    <div class="logo-area">
+      <span class="sparkle"></span>
+      <span class="sparkle"></span>
+      <span class="sparkle"></span>
+      <span class="sparkle"></span>
+      <div class="logo-pixel-frame">
+        <img src="vc_logo.png" alt="BeeBotix Logo"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="bee-fallback" style="display:none">
+          <!-- fallback pixel bee SVG -->
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="8" width="24" height="8" fill="#f5c518"/>
+            <rect x="16" y="16" width="32" height="8" fill="#1a1208"/>
+            <rect x="12" y="24" width="40" height="8" fill="#f5c518"/>
+            <rect x="12" y="32" width="40" height="8" fill="#1a1208"/>
+            <rect x="16" y="40" width="32" height="8" fill="#f5c518"/>
+            <rect x="20" y="48" width="24" height="8" fill="#1a1208"/>
+            <rect x="4" y="16" width="12" height="4" fill="#a8d8f0" opacity="0.8"/>
+            <rect x="48" y="16" width="12" height="4" fill="#a8d8f0" opacity="0.8"/>
+            <rect x="24" y="20" width="6" height="6" fill="white"/>
+            <rect x="34" y="20" width="6" height="6" fill="white"/>
+            <rect x="25" y="21" width="4" height="4" fill="#1a1208"/>
+            <rect x="35" y="21" width="4" height="4" fill="#1a1208"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="name-block">
+      <span class="pixel-tag">// WELCOME TO MY SPACE //</span>
+      <h1>Sukarna Jana<span class="underline-pixel"></span></h1>
+      <br>
+      <div class="founder-badge">FOUNDER @ BEEBOTIX</div>
+    </div>
+  </header>
+
+  <div class="pixel-divider"></div>
+
+  <!-- About -->
+  <div class="panel">
+    <div class="section-label">ABOUT_ME.txt</div>
+    <p class="about-text">
+      Hey there! I am <strong>Sukarna Jana</strong>, the Founder of <strong>BeeBotix</strong>.<br><br>
+      I build things that buzz with life, code with curiosity, and ship with soul.
+      BeeBotix is where robotics, software and wild ideas collide into something
+      worth sharing with the world.<span class="cursor-blink"></span>
+    </p>
+  </div>
+
+  <!-- Bee runner -->
+  <div class="bee-row">
+    <div class="pixel-bee">
+      <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="8" y="2" width="12" height="4" fill="#f5c518"/>
+        <rect x="6" y="6" width="16" height="4" fill="#1a1208"/>
+        <rect x="4" y="10" width="20" height="4" fill="#f5c518"/>
+        <rect x="4" y="14" width="20" height="4" fill="#1a1208"/>
+        <rect x="6" y="18" width="16" height="4" fill="#f5c518"/>
+        <rect x="8" y="22" width="12" height="4" fill="#1a1208"/>
+        <rect x="0" y="6" width="6" height="3" fill="#a8d8f0" opacity="0.85"/>
+        <rect x="22" y="6" width="6" height="3" fill="#a8d8f0" opacity="0.85"/>
+        <rect x="9" y="8" width="4" height="4" fill="white"/>
+        <rect x="15" y="8" width="4" height="4" fill="white"/>
+        <rect x="10" y="9" width="2" height="2" fill="#1a1208"/>
+        <rect x="16" y="9" width="2" height="2" fill="#1a1208"/>
+      </svg>
     </div>
   </div>
 
-  <div class="bottom-left">
-    We’re redirecting you to our new site…  
-    <a href="https://beebotix.com/">Click here</a>
+  <!-- Websites -->
+  <div class="websites-label">WEBSITES.dir</div>
+
+  <!-- Main BeeBotix -->
+  <a class="main-site" href="https://beebotix.com" target="_blank" rel="noopener">
+    <div class="main-site-icon">
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="8" y="2" width="24" height="4" fill="#f5c518"/>
+        <rect x="4" y="6" width="32" height="6" fill="#f5c518"/>
+        <rect x="2" y="12" width="36" height="6" fill="#1a1208" stroke="#f5c518" stroke-width="2"/>
+        <rect x="2" y="18" width="36" height="6" fill="#f5c518"/>
+        <rect x="4" y="24" width="32" height="6" fill="#1a1208" stroke="#f5c518" stroke-width="2"/>
+        <rect x="8" y="30" width="24" height="4" fill="#f5c518"/>
+        <rect x="0" y="8" width="6" height="4" fill="#a8d8f0" opacity="0.8"/>
+        <rect x="34" y="8" width="6" height="4" fill="#a8d8f0" opacity="0.8"/>
+        <rect x="13" y="9" width="4" height="4" fill="white"/>
+        <rect x="23" y="9" width="4" height="4" fill="white"/>
+        <rect x="14" y="10" width="2" height="2" fill="#1a1208"/>
+        <rect x="24" y="10" width="2" height="2" fill="#1a1208"/>
+      </svg>
+    </div>
+    <div class="main-site-info">
+      <span class="main-site-name">beebotix.com</span>
+      <span class="main-site-desc">The main hive &mdash; home of BeeBotix</span>
+    </div>
+    <div class="main-site-arrow">&gt;&gt;</div>
+  </a>
+
+  <!-- Branch brands label -->
+  <div class="branch-header">BRANCH BRANDS</div>
+
+  <div class="branch-grid">
+
+    <!-- Sparkplug -->
+    <a class="branch-card" href="https://sparkplug.beebotix.com" target="_blank" rel="noopener">
+      <div class="corner corner-tl"></div>
+      <div class="corner corner-tr"></div>
+      <div class="corner corner-bl"></div>
+      <div class="corner corner-br"></div>
+      <div class="branch-icon">
+        <!-- Lightning bolt SVG -->
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="16" y="2" width="8" height="4" fill="#d4800a"/>
+          <rect x="12" y="6" width="8" height="4" fill="#d4800a"/>
+          <rect x="8" y="10" width="16" height="4" fill="#d4800a"/>
+          <rect x="12" y="14" width="8" height="4" fill="#d4800a"/>
+          <rect x="8" y="18" width="8" height="4" fill="#d4800a"/>
+          <rect x="4" y="22" width="8" height="4" fill="#d4800a"/>
+          <rect x="8" y="26" width="8" height="4" fill="#d4800a"/>
+        </svg>
+      </div>
+      <span class="branch-name">sparkplug.beebotix.com</span>
+      <span class="branch-tag">Energy. Ignition. Drive.</span>
+      <span class="branch-arrow">&gt;&gt;</span>
+    </a>
+
+    <!-- Kamakiri -->
+    <a class="branch-card" href="https://kamakiri.beebotix.com" target="_blank" rel="noopener">
+      <div class="corner corner-tl"></div>
+      <div class="corner corner-tr"></div>
+      <div class="corner corner-bl"></div>
+      <div class="corner corner-br"></div>
+      <div class="branch-icon">
+        <!-- Mantis / blade SVG -->
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="14" y="2" width="4" height="4" fill="#2c7a2c"/>
+          <rect x="12" y="6" width="8" height="4" fill="#2c7a2c"/>
+          <rect x="10" y="10" width="4" height="4" fill="#2c7a2c"/>
+          <rect x="18" y="10" width="4" height="4" fill="#2c7a2c"/>
+          <rect x="8" y="14" width="4" height="8" fill="#2c7a2c"/>
+          <rect x="20" y="14" width="4" height="8" fill="#2c7a2c"/>
+          <rect x="12" y="18" width="8" height="4" fill="#2c7a2c"/>
+          <rect x="14" y="22" width="4" height="8" fill="#2c7a2c"/>
+          <rect x="4" y="10" width="4" height="4" fill="#4ab04a"/>
+          <rect x="24" y="10" width="4" height="4" fill="#4ab04a"/>
+        </svg>
+      </div>
+      <span class="branch-name">kamakiri.beebotix.com</span>
+      <span class="branch-tag">Precision. Agility. Edge.</span>
+      <span class="branch-arrow">&gt;&gt;</span>
+    </a>
+
+    <!-- HopeFor0b001 -->
+    <a class="branch-card" href="https://hopefor0b001.beebotix.com" target="_blank" rel="noopener">
+      <div class="corner corner-tl"></div>
+      <div class="corner corner-tr"></div>
+      <div class="corner corner-bl"></div>
+      <div class="corner corner-br"></div>
+      <div class="branch-icon">
+        <!-- Heart pixel SVG -->
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="6" width="8" height="4" fill="#c0392b"/>
+          <rect x="20" y="6" width="8" height="4" fill="#c0392b"/>
+          <rect x="2" y="10" width="12" height="4" fill="#c0392b"/>
+          <rect x="18" y="10" width="12" height="4" fill="#c0392b"/>
+          <rect x="2" y="14" width="28" height="4" fill="#c0392b"/>
+          <rect x="4" y="18" width="24" height="4" fill="#c0392b"/>
+          <rect x="6" y="22" width="20" height="4" fill="#c0392b"/>
+          <rect x="10" y="26" width="12" height="4" fill="#c0392b"/>
+          <rect x="14" y="30" width="4" height="2" fill="#c0392b"/>
+        </svg>
+      </div>
+      <span class="branch-name">hopefor0b001.beebotix.com</span>
+      <span class="branch-tag">Care for the machine.</span>
+      <span class="branch-arrow">&gt;&gt;</span>
+    </a>
+
   </div>
 
-  <script>
-    // Redirect countdown
-    let timeLeft = 5;
-    const timerEl = document.getElementById("timer");
-    const countdown = setInterval(() => {
-      timeLeft--;
-      timerEl.textContent = timeLeft;
-      if (timeLeft <= 0) {
-        clearInterval(countdown);
-        window.location.href = "https://beebotix.com/";
-      }
-    }, 1000);
+  <!-- Social Footer -->
+  <footer>
+    <div class="corner corner-tl"></div>
+    <div class="corner corner-tr"></div>
+    <div class="corner corner-bl"></div>
+    <div class="corner corner-br"></div>
+    <div class="section-label">FIND_ME.social</div>
 
-    // Canvas network animation (inspired by Marco’s Pen)
-    (function() {
-      const canvas = document.getElementById('network-canvas');
-      const ctx = canvas.getContext('2d');
-      let width = canvas.width = window.innerWidth;
-      let height = canvas.height = window.innerHeight;
-      const target = { x: width / 2, y: height / 2 };
-      let points = [];
+    <div class="social-row">
 
-      // Create grid of points
-      const createPoints = () => {
-        points = [];
-        const spacingX = width / 20;
-        const spacingY = height / 20;
-        for (let x = 0; x < width; x += spacingX) {
-          for (let y = 0; y < height; y += spacingY) {
-            const px = x + Math.random() * spacingX;
-            const py = y + Math.random() * spacingY;
-            points.push({ x: px, y: py, originX: px, originY: py, active: 0, circleActive: 0, closest: [] });
-          }
-        }
-        // Compute closest neighbors
-        points.forEach(p1 => {
-          const sorted = points.filter(p2 => p2 !== p1)
-            .sort((a, b) => ((p1.x - a.x) ** 2 + (p1.y - a.y) ** 2) - ((p1.x - b.x) ** 2 + (p1.y - b.y) ** 2))
-            .slice(0, 5);
-          p1.closest = sorted;
-        });
-      };
+      <a class="social-link" href="https://github.com/SukarnaJana" target="_blank" rel="noopener" title="GitHub">
+        <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85.004 1.7.115 2.5.337 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.75c0 .27.18.58.69.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/>
+        </svg>
+        <span class="social-name">GitHub</span>
+      </a>
 
-      function drawLines(p) {
-        if (!p.active) return;
-        p.closest.forEach(c => {
-          ctx.beginPath();
-          ctx.moveTo(p.x, p.y);
-          ctx.lineTo(c.x, c.y);
-          ctx.strokeStyle = `rgba(100,150,200,${p.active})`;
-          ctx.stroke();
-        });
-      }
+      <a class="social-link" href="https://www.linkedin.com/in/sukarna-jana/" target="_blank" rel="noopener" title="LinkedIn">
+        <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zM9 17H6.5v-7H9v7zM7.75 8.56a1.44 1.44 0 110-2.88 1.44 1.44 0 010 2.88zM18 17h-2.5v-3.5c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5V17H10v-7h2.5v1.08C13.11 10.4 13.8 10 14.75 10c1.79 0 3.25 1.46 3.25 3.25V17z"/>
+        </svg>
+        <span class="social-name">LinkedIn</span>
+      </a>
 
-      function drawCircle(p) {
-        if (!p.circleActive) return;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, 2, 0, 2 * Math.PI, false);
-        ctx.fillStyle = `rgba(100,150,200,${p.circleActive})`;
-        ctx.fill();
-      }
+      <a class="social-link" href="https://x.com/janasukarna" target="_blank" rel="noopener" title="X / Twitter">
+        <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        </svg>
+        <span class="social-name">X</span>
+      </a>
 
-      function animate() {
-        ctx.clearRect(0, 0, width, height);
-        points.forEach(p => {
-          // Distance from cursor (or center)
-          const dx = target.x - p.x;
-          const dy = target.y - p.y;
-          const dist = dx * dx + dy * dy;
-          if (dist < 40000) {
-            p.active = 0.3;
-            p.circleActive = 0.6;
-          } else if (dist < 160000) {
-            p.active = 0.1;
-            p.circleActive = 0.3;
-          } else {
-            p.active = 0;
-            p.circleActive = 0;
-          }
-          drawLines(p);
-          drawCircle(p);
-        });
-        requestAnimationFrame(animate);
-      }
+      <a class="social-link" href="https://instagram.com/sukarnascience" target="_blank" rel="noopener" title="Instagram">
+        <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+        </svg>
+        <span class="social-name">Instagram</span>
+      </a>
 
-      window.addEventListener('mousemove', e => {
-        target.x = e.clientX;
-        target.y = e.clientY;
-      });
+      <a class="social-link" href="https://www.youtube.com/@sukarnajana7070" target="_blank" rel="noopener" title="YouTube">
+        <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M21.543 6.498C22 8.28 22 12 22 12s0 3.72-.457 5.502c-.254.985-.997 1.76-1.938 2.022C17.896 20 12 20 12 20s-5.893 0-7.605-.476c-.945-.266-1.687-1.04-1.938-2.022C2 15.72 2 12 2 12s0-3.72.457-5.502c.254-.985.997-1.76 1.938-2.022C6.107 4 12 4 12 4s5.896 0 7.605.476c.945.266 1.687 1.04 1.938 2.022zM10 15.5l6-3.5-6-3.5v7z"/>
+        </svg>
+        <span class="social-name">YouTube</span>
+      </a>
 
-      window.addEventListener('resize', () => {
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
-        createPoints();
-      });
+      <a class="social-link" href="mailto:sukarna@beebotix.com" title="Email">
+        <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4.7l-8 5.334L4 8.7V6.297l8 5.333 8-5.333V8.7z"/>
+        </svg>
+        <span class="social-name">Email</span>
+      </a>
 
-      createPoints();
-      animate();
-    })();
-  </script>
+    </div>
+
+    <div class="pixel-counter" id="counter">VISITORS: 001337</div>
+  </footer>
+
+</div>
+
+<script>
+  window.addEventListener('load', function() {
+    setTimeout(function() {
+      document.getElementById('loader').classList.add('hidden');
+    }, 1800);
+  });
+
+  (function() {
+    var el = document.getElementById('counter');
+    var val = 1337 + Math.floor(Math.random() * 99);
+    el.textContent = 'VISITORS: ' + String(val).padStart(6, '0');
+  })();
+
+  document.querySelectorAll('.branch-card, .main-site, .social-link').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      var px = document.createElement('div');
+      px.style.cssText = [
+        'position:fixed',
+        'width:10px', 'height:10px',
+        'background:#f5c518',
+        'top:' + (e.clientY - 5) + 'px',
+        'left:' + (e.clientX - 5) + 'px',
+        'pointer-events:none',
+        'z-index:9998',
+        'animation:pixel-pop 0.3s step-end forwards'
+      ].join(';');
+      document.body.appendChild(px);
+      setTimeout(function() { px.remove(); }, 350);
+    });
+  });
+
+  var s = document.createElement('style');
+  s.textContent = '@keyframes pixel-pop{0%{transform:scale(1);opacity:1}50%{transform:scale(3);opacity:0.6}100%{transform:scale(5);opacity:0}}';
+  document.head.appendChild(s);
+</script>
 </body>
 </html>
